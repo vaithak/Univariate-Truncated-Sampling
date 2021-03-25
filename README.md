@@ -5,7 +5,7 @@
 ## Easy
 - Generated a 100 dimensional cube and sampled points using three different random walks:
   - ["Ball Walk", "Random Direction Hit and Run", "Change Direction Hit and Run"]
-- Plots are sampled points projected along the first two dimensions: 
+- Plots of sampled points projected along the first two dimensions: 
 ![Easy/Combined_Walks.png](Easy/Combined_Walks.png)  
 
 ## Medium: Accept-Reject Sampling
