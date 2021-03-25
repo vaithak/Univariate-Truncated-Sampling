@@ -9,12 +9,16 @@
 ![Easy/Combined_Walks.png](Easy/Combined_Walks.png)  
 
 ## Medium: Accept-Reject Sampling
-- TODO: Add Description
-- Plots:
+- **Target pdf (Unnormalized) (F) :**  sqrt(x + x<sup>2</sup> - x<sup>3</sup> + 2)
+- **Suppport :** (-2, 2)  
+- **Proposal pdf (G) :** Uniform (-2, 2)  
+> The code is written such that it also works for unnormalized pdf, maximum value **M** of **F(x)/G(x)** is calculated by evaluating the ratio over random uniform samples over the support.
+> The samples points were written into `data_1.txt` and plotted using python file `plot.py`.
+- **Plots:** <br>  
 ![Medium/Histogram.png](Medium/Histogram.png)  
 
 ## Hard: Metropolis-Hastings algorithm
 - TODO: Add Description
-- Plots:
+- **Plots:**
   - ![Hard/Histogram.png](Hard/Histogram.png)  
   - ![Hard/Trace_Plot.png](Hard/Trace_Plot.png)  
