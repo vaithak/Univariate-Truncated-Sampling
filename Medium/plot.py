@@ -34,7 +34,7 @@ if __name__ == '__main__':
     ret_arr = read_data_from_file(filename)
     sns.histplot(ret_arr, ax=ax, stat='density', label="Histogram of sampled points")
 
-    ax.legend(loc="center right")
+    ax.legend(loc="upper right")
     ax.set_title("Unnormalized target pdf: ${\sqrt{x + x^2 - x^3 + 2}}$")
     ax.set_xlabel("Support: (-2, 2)")
     plt.show()
