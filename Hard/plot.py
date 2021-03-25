@@ -35,5 +35,13 @@ if __name__ == '__main__':
     ax.legend(loc="upper center")
     ax.set_title("Unnormalized target pdf: ${\sqrt{x + x^2 - x^3 + 2}}$")
     ax.set_xlabel("Support: (-2, 2)")
+
+    fig_trace, ax_trace = plt.subplots(1, 1)
+    ax_trace.scatter(np.arange(len(ret_arr[0:10000])), ret_arr[0:10000], s=1.5, alpha=0.5)
+    ax_trace.set_title("Trace plot for sampled values")
+    ax_trace.set_ylim((-3, 3))
+    ax_trace.set_xlabel("Time index")    
+    ax_trace.set_ylabel("Sampled values")    
+
     plt.show()
 
