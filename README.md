@@ -9,9 +9,9 @@
 ![Easy/Combined_Walks.png](Easy/Combined_Walks.png)  
 
 ## Medium: Accept-Reject Sampling
-> The code is written such that it also works for unnormalized pdf, maximum value **M** of **F(x)/G(x)** is calculated by evaluating the ratio over random uniform samples over the support.
-> The samples points were written into `data_1.txt` and plotted using python file `plot.py`. 
-> The pdfs are chosen with form similar to the density functions that can be obtained by norm of velocity vector of a parametric polynomial curve.  
+* The code is written such that it also works for unnormalized pdf, maximum value **M** of **F(x)/G(x)** is calculated by evaluating the ratio over random uniform samples over the support.  
+* The samples points were written into `data_1.txt` and `data_2.txt` and plotted using python file `plot.py`.  
+* The pdfs are chosen with form similar to the density functions that can be obtained by norm of velocity vector of a parametric polynomial curve.  
 
 1) **Target pdf (Unnormalized) (F) :**  sqrt(x + x<sup>2</sup> - x<sup>3</sup> + 2)
     - **Suppport :** (-2, 2)  
@@ -25,8 +25,8 @@
     ![Medium/Histogram_2.png](Medium/Histogram_2.png)  
 
 ## Hard: Metropolis-Hastings algorithm
-> The samples points were written into `data_1.txt` and plotted using python file `plot.py`. 
-> The pdfs are chosen with form similar to the density functions that can be obtained by norm of velocity vector of a parametric polynomial curve.  
+* The samples points were written into `data_1.txt` and `data_2.txt` and plotted using python file `plot.py`.  
+* The pdfs are chosen with form similar to the density functions that can be obtained by norm of velocity vector of a parametric polynomial curve.  
 
 1) **Target pdf (Unnormalized) (F) :**  sqrt(x + x<sup>2</sup> - x<sup>3</sup> + 2)
     - **Suppport :** (-2, 2)  
