@@ -25,8 +25,13 @@ double min(double a, double b) {
 
 
 // unnormalized target pdf
-double target_unnorm_pdf(double x) {
+double target_unnorm_pdf_1(double x) {
     return sqrt((x) + (x*x) - (x*x*x) + 2);
+}
+
+// unnormalized bimodal target pdf
+double target_unnorm_pdf_2(double x) {
+    return sqrt(4.5*(x-1) + pow(x-1, 2) - 4*pow(x-1, 3) - pow(x-1, 4) + 3);
 }
 
 
@@ -86,15 +91,29 @@ vector<double> metropolis_hastings (  TARGET_PDF target_pdf,
 
 
 int main(int argc, char const *argv[]) {
-    pair<double, double> support (-2.0, 2.0);
-    double kernel_sigma = min(1.0, (support.second - support.first)/8.0);
-    std::random_device rd;
-    std::default_random_engine generator;
-    generator.seed( rd() );
-    Normal_PDF normal_pdf(kernel_sigma);
-    std::normal_distribution<double> normal_kernel(0.0, kernel_sigma);
-    vector<double> samples = metropolis_hastings(target_unnorm_pdf, normal_kernel, 
-                                            normal_pdf, generator, support, (support.first + support.second)/2.0);
-    write_data_to_file(samples, "data_1.txt");
+    // First distribution
+    pair<double, double> support_1 (-2.0, 2.0);
+    double kernel_sigma_1 = min(1.0, (support_1.second - support_1.first)/8.0);
+    std::random_device rd_1;
+    std::default_random_engine generator_1;
+    generator_1.seed( rd_1() );
+    Normal_PDF normal_pdf_1(kernel_sigma_1);
+    std::normal_distribution<double> normal_kernel_1(0.0, kernel_sigma_1);
+    vector<double> samples_1 = metropolis_hastings(target_unnorm_pdf_1, normal_kernel_1, 
+                                            normal_pdf_1, generator_1, support_1, (support_1.first + support_1.second)/2.0);
+    write_data_to_file(samples_1, "data_1.txt");
+
+
+    // Second distribution
+    pair<double, double> support_2 (-3.0, 2.2);
+    double kernel_sigma_2 = min(1.0, (support_2.second - support_2.first)/8.0);
+    std::random_device rd_2;
+    std::default_random_engine generator_2;
+    generator_2.seed( rd_2() );
+    Normal_PDF normal_pdf_2(kernel_sigma_2);
+    std::normal_distribution<double> normal_kernel_2(0.0, kernel_sigma_2);
+    vector<double> samples_2 = metropolis_hastings(target_unnorm_pdf_2, normal_kernel_2, 
+                                            normal_pdf_2, generator_2, support_2, (support_2.first + support_2.second)/2.0);
+    write_data_to_file(samples_2, "data_2.txt");
     return 0;
 }

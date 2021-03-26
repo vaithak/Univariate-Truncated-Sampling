@@ -3,15 +3,19 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 def p(x):
-    return np.sqrt(x + np.power(x, 2) - np.power(x, 3) + 2)
+    return np.sqrt(4.5*(x-1) + np.power(x-1, 2) - 4*np.power(x-1, 3) - np.power(x-1, 4) + 3);
+    # return np.sqrt(x + np.power(x, 2) - np.power(x, 3) + 2)
 
 def q(x):
     return 1.0/(b - a)
 
-filename = "data_1.txt"
-a, b = -2.0, 2.0
-x_uniform = np.random.uniform(a, b, int((b-a)*10000))
+# filename = "data_1.txt"
+# a, b = -2.0, 2.0
 
+filename = "data_2.txt"
+a, b = -3.0, 2.2
+
+x_uniform = np.random.uniform(a, b, int((b-a)*10000))
 C = (b - a) * np.mean(p(x_uniform))
 print("Normalization constant: ", C)
 
@@ -33,13 +37,17 @@ if __name__ == '__main__':
     sns.histplot(ret_arr, bins=30, ax=ax, stat='density', label="Histogram of sampled points")
 
     ax.legend(loc="upper center")
-    ax.set_title("Unnormalized target pdf: ${\sqrt{x + x^2 - x^3 + 2}}$")
-    ax.set_xlabel("Support: (-2, 2)")
+    # ax.set_title("Unnormalized target pdf: ${\sqrt{x + x^2 - x^3 + 2}}$")
+    ax.set_title("Unnormalized target pdf: ${\sqrt{4.5(x-1) + (x-1)^2 - 4(x-1)^3 - (x-1)^4 + 3}}$")
+    ax.set_xlabel(f"Support: ({a}, {b})")
 
     fig_trace, ax_trace = plt.subplots(1, 1)
     ax_trace.scatter(np.arange(len(ret_arr[0:10000])), ret_arr[0:10000], s=1.5, alpha=0.5)
     ax_trace.set_title("Trace plot for sampled values")
-    ax_trace.set_ylim((-3, 3))
+    
+    # ax_trace.set_ylim((-3, 3))
+    ax_trace.set_ylim((-4, 3))
+
     ax_trace.set_xlabel("Time index")    
     ax_trace.set_ylabel("Sampled values")    
 

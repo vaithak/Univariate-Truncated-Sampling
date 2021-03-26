@@ -43,6 +43,6 @@ if __name__ == '__main__':
 
     # ax.set_title("Unnormalized target pdf: ${\sqrt{x + x^2 - x^3 + 2}}$")
     ax.set_title("Unnormalized target pdf: ${\sqrt{4.5(x-1) + (x-1)^2 - 4(x-1)^3 - (x-1)^4 + 3}}$")
-    ax.set_xlabel("Support: (-2, 2)")
+    ax.set_xlabel(f"Support: ({a}, {b})")
     plt.show()
 
