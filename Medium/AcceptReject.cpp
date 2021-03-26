@@ -19,8 +19,13 @@ void write_data_to_file(const vector<double>& data, string filename) {
 }
 
 // unnormalized target pdf
-double target_unnorm_pdf(double x) {
+double target_unnorm_pdf_1(double x) {
     return sqrt((x) + (x*x) - (x*x*x) + 2);
+}
+
+// unnormalized bimodal target pdf
+double target_unnorm_pdf_2(double x) {
+    return sqrt(4.5*(x-1) + pow(x-1, 2) - 4*pow(x-1, 3) - pow(x-1, 4) + 3);
 }
 
 
@@ -115,12 +120,23 @@ vector<double> accept_reject (  TARGET_PDF target_pdf,
 
 
 int main(int argc, char const *argv[]) {
-    pair<double, double> support (-2.0, 2.0);
-    default_random_engine generator;
-    uniform_real_distribution<double> proposal_sampler(support.first, support.second);
-    Uniform_PDF uniform_pdf(support.first, support.second);
+    // First distribution
+    pair<double, double> support_1 (-2.0, 2.0);
+    default_random_engine generator_1;
+    uniform_real_distribution<double> proposal_sampler_1(support_1.first, support_1.second);
+    Uniform_PDF uniform_pdf_1(support_1.first, support_1.second);
 
-    vector<double> samples = accept_reject(target_unnorm_pdf, proposal_sampler, uniform_pdf, generator, support);
-    write_data_to_file(samples, "data_1.txt");
+    vector<double> samples_1 = accept_reject(target_unnorm_pdf_1, proposal_sampler_1, uniform_pdf_1, generator_1, support_1);
+    write_data_to_file(samples_1, "data_1.txt");
+
+
+    // Second distribution
+    pair<double, double> support_2 (-3.0, 2.2);
+    default_random_engine generator_2;
+    uniform_real_distribution<double> proposal_sampler_2(support_2.first, support_2.second);
+    Uniform_PDF uniform_pdf_2(support_2.first, support_2.second);
+
+    vector<double> samples_2 = accept_reject(target_unnorm_pdf_2, proposal_sampler_2, uniform_pdf_2, generator_2, support_2);
+    write_data_to_file(samples_2, "data_2.txt");
     return 0;
 }
