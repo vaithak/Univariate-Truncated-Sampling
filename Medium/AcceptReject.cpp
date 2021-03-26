@@ -98,7 +98,7 @@ vector<double> accept_reject (  TARGET_PDF target_pdf,
                                 RAND generator,
                                 const pair<double, double>& support,
                                 int n_samples_max_val = 1000,
-                                unsigned int n_samples = 10000 ) 
+                                unsigned int n_samples = 100000 ) 
 {
     // calculate max value of target_pdf divided by proposal pdf
     double max_val = 0.0;
